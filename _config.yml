@@ -4,8 +4,8 @@
 
 # Site
 title: 每天帮助你我一点
-subtitle:
-description:
+subtitle: 刘小森的个人博客
+description: 闻道有先后，术业有专攻，我们都在路上。
 author: Liu ZeSen
 email: 124005330@qq.com
 language: zh-CN
@@ -26,13 +26,13 @@ source_dir: source
 public_dir: public
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 highlight:
   enable: true
