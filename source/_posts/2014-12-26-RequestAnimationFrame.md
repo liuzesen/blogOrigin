@@ -88,7 +88,204 @@ window.onload = function() {
 ```
 3、常见缓动函数
 --------------
-有了``requestAnimationFrame``这样的宝贝在手，我们就可以做好多东西啦。首先想到的就是各种的缓动动画，
+有了``requestAnimationFrame``这样的宝贝在手，我们就可以做好多东西啦。首先想到的就是各种的缓动动画，缓动动画是一个模拟现实中运动的事物的动画，比如汽车的加速与停车、球从空中掉到地下的弹跳过程等等，以下是常见的缓动动画使用的函数：
+> Linear：无缓动效果
+> Quadratic：二次方的缓动（t^2）
+> Cubic：三次方的缓动（t^3）
+> Quartic：四次方的缓动（t^4）
+> Quintic：五次方的缓动（t^5）
+> Sinusoidal：正弦曲线的缓动（sin(t)）
+> Exponential：指数曲线的缓动（2^t）
+> Circular：圆形曲线的缓动（sqrt(1-t^2)）
+> Elastic：指数衰减的正弦曲线缓动
+> 超过范围的三次方缓动（(s+1)*t^3 – s*t^2）
+> 指数衰减的反弹缓动
+
+每一个缓动函数都有相对的加速度、减速度、先加速度后减速度的运动过程，通俗一点就是先慢后快、先快后慢、先慢到快再快到慢的过程，一般使用easeIn、easeOut、easeInOut来表示它们。加速度的函数和减速度的函数，它们是相互反函数，能够通过反函数的数学知识来推导出来，也能够通过相似的函数来代替减速度函数，本人数学不好，大家可以自行研究。通过这些动画能够实现我们很多效果。像轮播效果、手机scroll效果等等。以下是[张鑫旭](http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/)博客里的缓动函数集：
+```js
+/*
+ * Tween.js
+ * b: beginning value（初始值）；
+ * s: ending value（结束值）；
+ * t: current time（当前时间）；
+ * d: duration（持续时间）。
+ * you can visit 'http://easings.net/zh-cn' to get effect
+*/
+var Tween = {
+    Linear: function(b, s, t, d) { return (s-b)*t/d + b; },
+    Quad: {
+        easeIn: function(b, s, t, d) {
+            return (s-b) * (t /= d) * t + b;
+        },
+        easeOut: function(b, s, t, d) {
+            return -(s-b) *(t /= d)*(t-2) + b;
+        },
+        easeInOut: function(b, s, t, d) {
+            if ((t /= d / 2) < 1) return (s-b) / 2 * t * t + b;
+            return -(s-b) / 2 * ((--t) * (t-2) - 1) + b;
+        }
+    },
+    Cubic: {
+        easeIn: function(b, s, t, d) {
+            return (s-b) * (t /= d) * t * t + b;
+        },
+        easeOut: function(b, s, t, d) {
+            return (s-b) * ((t = t/d - 1) * t * t + 1) + b;
+        },
+        easeInOut: function(b, s, t, d) {
+            if ((t /= d / 2) < 1) return (s-b) / 2 * t * t*t + b;
+            return (s-b) / 2*((t -= 2) * t * t + 2) + b;
+        }
+    },
+    Quart: {
+        easeIn: function(b, s, t, d) {
+            return (s-b) * (t /= d) * t * t*t + b;
+        },
+        easeOut: function(b, s, t, d) {
+            return -(s-b) * ((t = t/d - 1) * t * t*t - 1) + b;
+        },
+        easeInOut: function(b, s, t, d) {
+            if ((t /= d / 2) < 1) return (s-b) / 2 * t * t * t * t + b;
+            return -(s-b) / 2 * ((t -= 2) * t * t*t - 2) + b;
+        }
+    },
+    Quint: {
+        easeIn: function(b, s, t, d) {
+            return (s-b) * (t /= d) * t * t * t * t + b;
+        },
+        easeOut: function(b, s, t, d) {
+            return (s-b) * ((t = t/d - 1) * t * t * t * t + 1) + b;
+        },
+        easeInOut: function(b, s, t, d) {
+            if ((t /= d / 2) < 1) return (s-b) / 2 * t * t * t * t * t + b;
+            return (s-b) / 2*((t -= 2) * t * t * t * t + 2) + b;
+        }
+    },
+    Sine: {
+        easeIn: function(b, s, t, d) {
+            return -(s-b) * Math.cos(t/d * (Math.PI/2)) + s;
+        },
+        easeOut: function(b, s, t, d) {
+            return (s-b) * Math.sin(t/d * (Math.PI/2)) + b;
+        },
+        easeInOut: function(b, s, t, d) {
+            return -(s-b) / 2 * (Math.cos(Math.PI * t/d) - 1) + b;
+        }
+    },
+    Expo: {
+        easeIn: function(b, s, t, d) {
+            return (t==0) ? b : (s-b) * Math.pow(2, 10 * (t/d - 1)) + b;
+        },
+        easeOut: function(b, s, t, d) {
+            return (t==d) ? b + (s-b) : (s-b) * (-Math.pow(2, -10 * t/d) + 1) + b;
+        },
+        easeInOut: function(b, s, t, d) {
+            if (t==0) return b;
+            if (t==d) return b+c;
+            if ((t /= d / 2) < 1) return (s-b) / 2 * Math.pow(2, 10 * (t - 1)) + b;
+            return (s-b) / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+        }
+    },
+    Circ: {
+        easeIn: function(b, s, t, d) {
+            return -(s-b) * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
+        },
+        easeOut: function(b, s, t, d) {
+            return (s-b) * Math.sqrt(1 - (t = t/d - 1) * t) + b;
+        },
+        easeInOut: function(b, s, t, d) {
+            if ((t /= d / 2) < 1) return -(s-b) / 2 * (Math.sqrt(1 - t * t) - 1) + b;
+            return (s-b) / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
+        }
+    },
+		Elastic: {
+				easeIn: function(b, s, t, d, a, p) {
+						var v; //s - v
+						if (t==0) return b;
+						if ((t /= d) == 1) return s;
+						if (typeof p == "undefined") p = d * .3;
+						if (!a || a < Math.abs((s-b))) {
+								v = p / 4;
+								a = s-b;
+						} else {
+								v = p / (2 * Math.PI) * Math.asin((s-b) / a);
+						}
+						return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - v) * (2 * Math.PI) / p)) + b;
+				},
+				easeOut: function(b, s, t, d, a, p) {
+						var v;
+						if (t==0) return b;
+						if ((t /= d) == 1) return s;
+						if (typeof p == "undefined") p = d * .3;
+						if (!a || a < Math.abs((s-b))) {
+								a = s-b; 
+								v = p / 4;
+						} else {
+								v = p/(2*Math.PI) * Math.asin((s-b)/a);
+						}
+						return (a * Math.pow(2, -10 * t) * Math.sin((t * d - v) * (2 * Math.PI) / p) + s);
+				},
+				easeInOut: function(b, s, t, d, a, p) {
+						var v;
+						if (t==0) return b;
+						if ((t /= d / 2) == 2) return b;
+						if (typeof p == "undefined") p = d * (.3 * 1.5);
+						if (!a || a < Math.abs((s-b))) {
+								a = s-b; 
+								v = p / 4;
+						} else {
+								v = p / (2  *Math.PI) * Math.asin((s-b) / a);
+						}
+						if (t < 1) return -.5 * (a * Math.pow(2, 10* (t -=1 )) * Math.sin((t * d - v) * (2 * Math.PI) / p)) + b;
+						return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - v) * (2 * Math.PI) / p ) * .5 + s;
+				}
+		},
+		Back: {
+				easeIn: function(b, s, t, d, v) {
+						if (typeof v == "undefined") v = 1.70158;
+						return (s-b) * (t /= d) * t * ((v + 1) * t - v) + b;
+				},
+				easeOut: function(b, s, t, d, v) {
+						if (typeof v == "undefined") v = 1.70158;
+						return (s-b) * ((t = t/d - 1) * t * ((v + 1) * t + v) + 1) + b;
+				},
+				easeInOut: function(b, s, t, d, v) {
+						if (typeof v == "undefined") v = 1.70158; 
+						if ((t /= d / 2) < 1) return (s-b) / 2 * (t * t * (((v *= (1.525)) + 1) * t - v)) + b;
+						return (s-b) / 2*((t -= 2) * t * (((v *= (1.525)) + 1) * t + v) + 2) + b;
+				}
+		},
+		Bounce: {
+				easeIn: function(b, s, t, d) {
+					return s - Tween.Bounce.easeOut( 0, s-b, d-t, d);
+				},
+				easeOut: function(b, s, t, d) {
+						if ((t /= d) < (1 / 2.75)) {
+								return (s-b) * (7.5625 * t * t) + b;
+						} else if (t < (2 / 2.75)) {
+								return (s-b) * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+						} else if (t < (2.5 / 2.75)) {
+								return (s-b) * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+						} else {
+								return (s-b) * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+						}
+				},
+				easeInOut: function(b, s, t, d) {
+						if (t < d / 2) {
+								return Tween.Bounce.easeIn(0, (s-b), t * 2, d) * .5 + b;
+						} else {
+								return Tween.Bounce.easeOut(0, (s-b), t * 2 - d, d) * .5 + (s-b) * .5 + b;
+						}
+				}
+		}
+};
+Math.Tween = Tween;
+```
+我对其进行了相对应的测试：
+[Animation test](/animation-test/index/index.html)
 
 4、参考文献
 ----------
+[张鑫旭博客 http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/](http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/)
+[缓动函数查看表 http://easings.net/zh-cn](http://easings.net/zh-cn)
+[javascript动画 http://javascript.info/tutorial/animation](http://javascript.info/tutorial/animation)

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>test</title>
+	</head>
+	<style type="text/css">
+		.block-wrapper {
+			padding: 20px;
+			background-color: #EEE; 
+		}
+		.block {
+			position: relative;
+			width: 20px;
+			height: 20px;
+			background-color: #d82929;
+			left: 0;
+		}
+	</style>
+	<body>
+		<!-- quadratic -->
+		<div class="block-wrapper">
+			<p>quadratic 二次方 easeIn 由慢至快 加速度 <button id="block1_1Btn">开始</button></p>
+			<div id="block1_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>quadratic 二次方 easeOut 由快至慢 加速度 <button id="block1_2Btn">开始</button></p>
+			<div id="block1_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>quadratic 二次方 easeInOut 由慢至快再至慢 加速度 <button id="block1_3Btn">开始</button></p>
+			<div id="block1_3" class="block"></div>
+		</div>
+		<!-- quadratic -->
+		<!-- cubic -->
+		<div class="block-wrapper">
+			<p>cubic 三次方 easeIn 由慢至快 加速度 <button id="block2_1Btn">开始</button></p>
+			<div id="block2_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>cubic 三次方 easeOut 由快至慢 加速度 <button id="block2_2Btn">开始</button></p>
+			<div id="block2_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>cubic 三次方 easeInOut 由慢至快再至慢 加速度 <button id="block2_3Btn">开始</button></p>
+			<div id="block2_3" class="block"></div>
+		</div>
+		<!-- cubic -->	
+		<!-- quartic -->
+		<div class="block-wrapper">
+			<p>quartic 四次方 easeIn 由慢至快 加速度 <button id="block3_1Btn">开始</button></p>
+			<div id="block3_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>quartic 四次方 easeOut 由快至慢 加速度 <button id="block3_2Btn">开始</button></p>
+			<div id="block3_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>quartic 四次方 easeInOut 由慢至快再至慢 加速度 <button id="block3_3Btn">开始</button></p>
+			<div id="block3_3" class="block"></div>
+		</div>
+		<!-- quartic -->	
+		<!-- Quint -->
+		<div class="block-wrapper">
+			<p>Quint 五次方 easeIn 由慢至快 加速度 <button id="block4_1Btn">开始</button></p>
+			<div id="block4_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Quint 五次方 easeOut 由快至慢 加速度 <button id="block4_2Btn">开始</button></p>
+			<div id="block4_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Quint 五次方 easeInOut 由慢至快再至慢 加速度 <button id="block4_3Btn">开始</button></p>
+			<div id="block4_3" class="block"></div>
+		</div>
+		<!-- Quint -->	
+		<!-- sine -->
+		<div class="block-wrapper">
+			<p>sine 正余弦 easeIn 由慢至快 加速度 <button id="block5_1Btn">开始</button></p>
+			<div id="block5_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>sine 正余弦 easeOut 由快至慢 加速度 <button id="block5_2Btn">开始</button></p>
+			<div id="block5_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>sine 正余弦 easeInOut 由慢至快再至慢 加速度 <button id="block5_3Btn">开始</button></p>
+			<div id="block5_3" class="block"></div>
+		</div>
+		<!-- sine -->	
+		<!-- Expo -->
+		<div class="block-wrapper">
+			<p>exponential 指数 easeIn 由慢至快 加速度 <button id="block6_1Btn">开始</button></p>
+			<div id="block6_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>exponential 指数 easeOut 由快至慢 加速度 <button id="block6_2Btn">开始</button></p>
+			<div id="block6_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>exponential 指数 easeInOut 由慢至快再至慢 加速度 <button id="block6_3Btn">开始</button></p>
+			<div id="block6_3" class="block"></div>
+		</div>
+		<!-- Expo -->	
+		<!-- Circle -->
+		<div class="block-wrapper">
+			<p>Circle 圆周 easeIn 由慢至快 加速度 <button id="block7_1Btn">开始</button></p>
+			<div id="block7_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Circle 圆周 easeOut 由快至慢 加速度 <button id="block7_2Btn">开始</button></p>
+			<div id="block7_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Circle 圆周 easeInOut 由慢至快再至慢 加速度 <button id="block7_3Btn">开始</button></p>
+			<div id="block7_3" class="block"></div>
+		</div>
+		<!-- Circle -->	
+		<!-- Elastic -->
+		<div class="block-wrapper">
+			<p>Elastic 弹性 easeIn 由慢至快 加速度 <button id="block8_1Btn">开始</button></p>
+			<div id="block8_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Elastic 弹性 easeOut 由快至慢 加速度 <button id="block8_2Btn">开始</button></p>
+			<div id="block8_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Elastic 弹性 easeInOut 由慢至快再至慢 加速度 <button id="block8_3Btn">开始</button></p>
+			<div id="block8_3" class="block"></div>
+		</div>
+		<!-- Elastic -->	
+		<!-- Back -->
+		<div class="block-wrapper">
+			<p>Back 后退 easeIn 由慢至快 加速度 <button id="block9_1Btn">开始</button></p>
+			<div id="block9_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Back 后退 easeOut 由快至慢 加速度 <button id="block9_2Btn">开始</button></p>
+			<div id="block9_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Back 后退 easeInOut 由慢至快再至慢 加速度 <button id="block9_3Btn">开始</button></p>
+			<div id="block9_3" class="block"></div>
+		</div>
+		<!-- Back -->	
+		<!-- Bounce -->
+		<div class="block-wrapper">
+			<p>Bounce 弹跳 easeIn 由慢至快 加速度 <button id="block10_1Btn">开始</button></p>
+			<div id="block10_1" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Bounce 弹跳 easeOut 由快至慢 加速度 <button id="block10_2Btn">开始</button></p>
+			<div id="block10_2" class="block"></div>
+		</div>
+		<div class="block-wrapper">
+			<p>Bounce 弹跳 easeInOut 由慢至快再至慢 加速度 <button id="block10_3Btn">开始</button></p>
+			<div id="block10_3" class="block"></div>
+		</div>
+		<!-- Bounce -->	
+	</body>
+	
+	<script type="text/javascript" src="js/pollill.js"></script>
+	<script type="text/javascript" src="js/ease.js"></script>
+	<script type="text/javascript">
+		var formLleftToRight = function(blockId, buttonId, begin, end, easeType, ease) {
+			var block = document.getElementById(blockId);
+			var reRunBtn = document.getElementById(buttonId);
+			
+			var step = 0, duration = 100;
+			
+			var isRunning = false;
+			var changeBtnValue = function() {
+				if (isRunning) {
+					reRunBtn.setAttribute('disabled', true);
+				} else {
+					reRunBtn.removeAttribute('disabled');
+				}
+			};
+			
+			var run = function() {
+				step++;
+				block.style.left = Math.Tween[easeType][ease](begin, end, step, duration) + 'px';
+				
+				if (step < duration) {
+					window.requestAnimationFrame(run);
+				} else {
+					isRunning = false;
+					changeBtnValue();			
+				}
+			};
+			
+			reRunBtn.onclick = function() {
+				if (!isRunning) {
+					// 重置样式 
+					block.style.left = begin + 'px';
+					step = 0;
+					isRunning = true;
+					changeBtnValue();
+					run();				
+				}
+			};
+			
+			changeBtnValue();
+		};
+		
+		window.onload = function() {
+			var begin = 0;
+			var end = 300;
+			formLleftToRight('block1_1', 'block1_1Btn', begin, end, 'Quad', 'easeIn');
+			formLleftToRight('block1_2', 'block1_2Btn', begin, end, 'Quad', 'easeOut');
+			formLleftToRight('block1_3', 'block1_3Btn', begin, end, 'Quad', 'easeInOut');
+			
+			formLleftToRight('block2_1', 'block2_1Btn', begin, end, 'Cubic', 'easeIn');
+			formLleftToRight('block2_2', 'block2_2Btn', begin, end, 'Cubic', 'easeOut');
+			formLleftToRight('block2_3', 'block2_3Btn', begin, end, 'Cubic', 'easeInOut');			
+	
+			formLleftToRight('block3_1', 'block3_1Btn', begin, end, 'Quart', 'easeIn');
+			formLleftToRight('block3_2', 'block3_2Btn', begin, end, 'Quart', 'easeOut');
+			formLleftToRight('block3_3', 'block3_3Btn', begin, end, 'Quart', 'easeInOut');		
+			
+			formLleftToRight('block4_1', 'block4_1Btn', begin, end, 'Quint', 'easeIn');
+			formLleftToRight('block4_2', 'block4_2Btn', begin, end, 'Quint', 'easeOut');
+			formLleftToRight('block4_3', 'block4_3Btn', begin, end, 'Quint', 'easeInOut');	
+			
+			formLleftToRight('block5_1', 'block5_1Btn', begin, end, 'Sine', 'easeIn');
+			formLleftToRight('block5_2', 'block5_2Btn', begin, end, 'Sine', 'easeOut');
+			formLleftToRight('block5_3', 'block5_3Btn', begin, end, 'Sine', 'easeInOut');
+			
+			formLleftToRight('block6_1', 'block6_1Btn', begin, end, 'Expo', 'easeIn');
+			formLleftToRight('block6_2', 'block6_2Btn', begin, end, 'Expo', 'easeOut');
+			formLleftToRight('block6_3', 'block6_3Btn', begin, end, 'Expo', 'easeInOut');	
+			
+			formLleftToRight('block7_1', 'block7_1Btn', begin, end, 'Circ', 'easeIn');
+			formLleftToRight('block7_2', 'block7_2Btn', begin, end, 'Circ', 'easeOut');
+			formLleftToRight('block7_3', 'block7_3Btn', begin, end, 'Circ', 'easeInOut');
+						
+			formLleftToRight('block8_1', 'block8_1Btn', begin, end, 'Elastic', 'easeIn');
+			formLleftToRight('block8_2', 'block8_2Btn', begin, end, 'Elastic', 'easeOut');
+			formLleftToRight('block8_3', 'block8_3Btn', begin, end, 'Elastic', 'easeInOut');
+									
+			formLleftToRight('block9_1', 'block9_1Btn', begin, end, 'Back', 'easeIn');
+			formLleftToRight('block9_2', 'block9_2Btn', begin, end, 'Back', 'easeOut');
+			formLleftToRight('block9_3', 'block9_3Btn', begin, end, 'Back', 'easeInOut');
+												
+			formLleftToRight('block10_1', 'block10_1Btn', begin, end, 'Bounce', 'easeIn');
+			formLleftToRight('block10_2', 'block10_2Btn', begin, end, 'Bounce', 'easeOut');
+			formLleftToRight('block10_3', 'block10_3Btn', begin, end, 'Bounce', 'easeInOut');
+		}
+
+		
+	</script>
+</html>
